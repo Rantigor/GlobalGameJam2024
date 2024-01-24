@@ -11,17 +11,30 @@ public class StanUpShow : MonoBehaviour
 
     [SerializeField] private Slider timerSlider;
 
-    bool isShowContinue = true;
+    bool isShowContinue = false;
     float _currentShowTime;
     private void Start()
     {
         dataSave = FindObjectOfType<DataSave>();
-        StageShow();
+    }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            StageShow();
+        }
     }
     public void StageShow()
     {
-        StartCoroutine(StartTimer());
-        
+        if(isShowContinue)
+        {
+            return;
+        }
+        else
+        {
+            isShowContinue = true;
+            StartCoroutine(StartTimer());
+        }
     }
     IEnumerator StartTimer()
     {

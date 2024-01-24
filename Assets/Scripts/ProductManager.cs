@@ -17,7 +17,14 @@ public class ProductManager : MonoBehaviour
         dataSave = FindObjectOfType<DataSave>();
         if(PlayerPrefs.GetString(Product.ProductName) != null)
         {
-            Product.IsProductBought = Convert.ToBoolean(PlayerPrefs.GetString(Product.ProductName));
+            if(PlayerPrefs.GetString(PlayerPrefs.GetString(Product.ProductName)) == "true")
+            {
+                Product.IsProductBought = true;
+            }
+            else
+            {
+                Product.IsProductBought= false;
+            }
         }
         transform.GetComponent<Image>().sprite = Product.ProductImage;
         transform.GetComponentInChildren<TextMeshProUGUI>().text = Product.ProductName + "\n" + Product.ProductPrice;
