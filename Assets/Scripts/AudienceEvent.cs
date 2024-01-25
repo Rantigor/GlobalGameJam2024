@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class AudienceEvent : MonoBehaviour, IPointerDownHandler
+public class AudienceEvent : MonoBehaviour
 {
     public int EventRatio;
     public GameObject[] AudienceEventAreaCorner = new GameObject[4];
@@ -23,18 +23,11 @@ public class AudienceEvent : MonoBehaviour, IPointerDownHandler
     {
         print("Event Hobb");
     }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        print(name);
-    }
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
             EventCreate();
         }
-
     }
 }
