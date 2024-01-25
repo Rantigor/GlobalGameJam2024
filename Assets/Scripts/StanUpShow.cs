@@ -57,6 +57,7 @@ public class StanUpShow : MonoBehaviour
     public void EndOfStageShow()
     {
         dataSave.Money += (int)(dataSave.MoneyEarning + (dataSave.MoneyEarning * (int)(100.01f - dataSave.HappinessRate)/100));
+        dataSave.HappinessRate += dataSave.CurrentStage.StageCapacity/10000;
         dataSave.SaveAllData();
     }
 }

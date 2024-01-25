@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -36,9 +37,16 @@ public class StagesManager : MonoBehaviour
             dataSave.MoneyEarning += Stage.StageEaringIncrease;
             Stage.IsStageBought= true;
             PlayerPrefs.SetString(Stage.StageName, Stage.IsStageBought.ToString());
-            dataSave.StageLevel = Stage.StogeLevel;
-            dataSave.SetStageImage();
             print("alýndý");
+        }
+        else if(!Stage.IsStageBought && (dataSave.Money < Stage.StagePrice))
+        {
+            print("Para yetersiz");
+        }
+        else if(Stage.IsStageBought)
+        {
+            dataSave.StageLevel = Stage.StageLevel;
+            dataSave.SetStageImage();
         }
     }
 }

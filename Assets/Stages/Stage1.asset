@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Stage1
   m_EditorClassIdentifier: 
   StageName: Stage1
-  StogeLevel: 1
+  StageLevel: 1
+  StageCapacity: 0
+  ShowTime: 0
   StagePrice: 10
   StageEaringIncrease: 100
   IsStageBought: 0

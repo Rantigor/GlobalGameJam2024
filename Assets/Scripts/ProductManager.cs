@@ -39,5 +39,9 @@ public class ProductManager : MonoBehaviour
             PlayerPrefs.SetString(Product.ProductName, Product.IsProductBought.ToString());
             print("alýndý");
         }
+        else if(!Product.IsProductBought && (dataSave.Money < Product.ProductPrice))
+        {
+            print("Para yetersiz");
+        }
     }
 }

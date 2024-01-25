@@ -11,26 +11,29 @@ public class DataSave : MonoBehaviour
 {
     public BigInteger Money = 0;
     public BigInteger MoneyEarning = 110;
-    public float ShowTime = 10;
+    public float ShowTime;
     [Range(0, 100)]
     public int HappinessRate;
-    public int StageLevel = 1;
+    public int StageLevel = 0;
     [SerializeField]List<StagesProductsSO> Stages;
+    public StagesProductsSO CurrentStage;
     public Image StageImage;
     private void Start()
     {
+        SaveAllData();
         LoadAllData();
         SetStageImage();
     }
 
     public void SetStageImage()
     {
-        foreach (StagesProductsSO stoge in Stages)
+        foreach (StagesProductsSO stage in Stages)
         {
-            if (stoge.StogeLevel == StageLevel && stoge.IsStageBought)
+            if (stage.StageLevel == StageLevel && stage.IsStageBought)
             {
-                StageImage.sprite = stoge.StageImage;
-                print("dfga");
+                StageImage.sprite = stage.StageImage;
+                ShowTime = stage.ShowTime;
+                CurrentStage = stage;
             }
         }
     }
@@ -65,6 +68,6 @@ public class DataSave : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        SaveAllData();
+        //SaveAllData();
     }
 }
