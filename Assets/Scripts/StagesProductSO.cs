@@ -9,6 +9,7 @@ public class StagesProductsSO : ScriptableObject
     public int StageLevel;
     public int StageCapacity;
     public float ShowTime;
+    public int ShowTicketPrice;
     public ulong StagePrice;
     public ulong StageEaringIncrease;
     public bool IsStageBought;

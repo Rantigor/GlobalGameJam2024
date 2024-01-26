@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +15,10 @@ public class StanUpShow : MonoBehaviour
 
     bool isShowContinue = false;
     float _currentShowTime;
+
+    [SerializeField] private GameObject _showEndUI;
+
+    ulong earnedMoney;
     private void Start()
     {
         dataSave = FindObjectOfType<DataSave>();
@@ -56,8 +62,24 @@ public class StanUpShow : MonoBehaviour
     }
     public void EndOfStageShow()
     {
-        dataSave.Money += (int)(dataSave.MoneyEarning + (dataSave.MoneyEarning * (int)(100.01f - dataSave.HappinessRate)/100));
+        earnedMoney = (ulong)(dataSave.CurrentStage.ShowTicketPrice * (int)(dataSave.CurrentStage.StageCapacity * (100.01f - dataSave.HappinessRate)/10000));
+        dataSave.Money += earnedMoney;
         dataSave.HappinessRate += dataSave.CurrentStage.StageCapacity/10000;
         dataSave.SaveAllData();
+        OpenEndUI();
+    }
+
+    public void OpenEndUI()
+    {
+        _showEndUI.SetActive(true);
+        GameObject.Find("EarnedMoney").GetComponent<TextMeshProUGUI>().text = earnedMoney.ToString();
+        StartCoroutine(CloseEndUI());
+    }
+    IEnumerator CloseEndUI()
+    {
+        yield return new WaitForSecondsRealtime(3.5f);
+        //close anim
+        yield return new WaitForSecondsRealtime(1f);
+        _showEndUI.SetActive(false);
     }
 }

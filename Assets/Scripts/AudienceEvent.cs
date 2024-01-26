@@ -11,7 +11,17 @@ public class AudienceEvent : MonoBehaviour
     public GameObject[] AudienceEventAreaCorner = new GameObject[4];
     public GameObject EventEffectUI;
 
-   
+    private AudioSource _audioSource;
+    public List<AudioClip> GeneralAudioClips = new List<AudioClip>();
+    private List<AudioClip> _currentAudioClips;
+
+
+    private void Start()
+    {
+        _currentAudioClips = GeneralAudioClips;
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     public void EventCreate()
     {
         Vector3 eventPos = new Vector3(Random.Range(AudienceEventAreaCorner[0].transform.position.x, AudienceEventAreaCorner[2].transform.position.x)
@@ -21,7 +31,15 @@ public class AudienceEvent : MonoBehaviour
     }
     public void EventEnter()
     {
-        print("Event Hobb");
+        if(_currentAudioClips.Count <= 0)
+        {
+            _currentAudioClips = GeneralAudioClips;
+        }
+
+        int randomNum = Random.Range(0, _currentAudioClips.Count);
+        _audioSource.clip = _currentAudioClips[randomNum];
+        _currentAudioClips.Remove(_currentAudioClips[randomNum]);
+        _audioSource.Play();
     }
     private void Update()
     {

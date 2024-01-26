@@ -58,7 +58,7 @@ public class ProductManager : MonoBehaviour
         PlayerPrefs.SetInt(nameof(_currentProduct), _currentProduct);
         PlayerPrefs.SetInt(Products[_currentProduct].ProductName, Products[_currentProduct].ProductLevel);
         PlayerPrefs.SetString("ProductPrice", Products[_currentProduct].ProductPrice.ToString());
-        PlayerPrefs.SetInt("EvilnessEffectPoint", Products[_currentProduct].EvilnessEffectPoint);
+        PlayerPrefs.SetFloat("EvilnessEffectPoint", Products[_currentProduct].EvilnessEffectPoint);
     }
     public void LoadProductData()
     {
@@ -66,7 +66,7 @@ public class ProductManager : MonoBehaviour
         Products[_currentProduct].ProductLevel = PlayerPrefs.GetInt(Products[_currentProduct].ProductName);
         Products[_currentProduct].ProductLevel = PlayerPrefs.GetInt(Products[_currentProduct].ProductName);
         Products[_currentProduct].ProductPrice = ulong.Parse(PlayerPrefs.GetString("ProductPrice"));
-        Products[_currentProduct].EvilnessEffectPoint = PlayerPrefs.GetInt("EvilnessEffectPoint");
+        Products[_currentProduct].EvilnessEffectPoint = PlayerPrefs.GetFloat("EvilnessEffectPoint");
     }
 
     private void OnApplicationQuit()

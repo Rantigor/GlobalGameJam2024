@@ -10,6 +10,6 @@ public class ProductsSO : ScriptableObject
     public ulong ProductPrice;
     public int ProductLevel;
     [Range(0,100)]
-    public int EvilnessEffectPoint;
+    public float EvilnessEffectPoint;
     public Sprite ProductImage;
 }

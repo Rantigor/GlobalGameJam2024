@@ -14,7 +14,7 @@ public class DataSave : MonoBehaviour
     public BigInteger MoneyEarning;
     public float ShowTime;
     [Range(0, 100)]
-    public int HappinessRate;
+    public float HappinessRate;
     public int StageLevel = 0;
     [SerializeField]List<StagesProductsSO> Stages;
     public StagesProductsSO CurrentStage;
@@ -60,8 +60,10 @@ public class DataSave : MonoBehaviour
         PlayerPrefs.SetString(nameof(MoneyEarning), MoneyEarning.ToString());
         PlayerPrefs.SetFloat(nameof(ShowTime), ShowTime);
         PlayerPrefs.SetInt(nameof(StageLevel), StageLevel);
-        PlayerPrefs.SetInt(nameof(HappinessRate), HappinessRate);
-        
+        PlayerPrefs.SetFloat(nameof(HappinessRate), HappinessRate);
+
+        if(CurrentStage != null)
+            PlayerPrefs.SetInt(CurrentStage.StageName, CurrentStage.ShowTicketPrice);
     }
     public void LoadAllData()
     {
@@ -69,7 +71,10 @@ public class DataSave : MonoBehaviour
         MoneyEarning = BigInteger.Parse(PlayerPrefs.GetString(nameof(MoneyEarning)));
         ShowTime = PlayerPrefs.GetFloat(nameof(ShowTime));
         StageLevel = PlayerPrefs.GetInt(nameof(StageLevel));
-        HappinessRate = PlayerPrefs.GetInt(nameof(HappinessRate));
+        HappinessRate = PlayerPrefs.GetFloat(nameof(HappinessRate));
+
+        if (CurrentStage != null)
+            CurrentStage.ShowTicketPrice = PlayerPrefs.GetInt(CurrentStage.StageName);
     }
     private void OnApplicationQuit()
     {

@@ -9,9 +9,17 @@ public class AudienceEventClicker : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         audienceEvent = FindObjectOfType<AudienceEvent>();
+        StartCoroutine(DeleteEvent());
     }
     public void OnPointerClick(PointerEventData eventData)
     {
         audienceEvent.EventEnter();
+        Destroy(gameObject);
+    }
+
+    IEnumerator DeleteEvent()
+    {
+        yield return new WaitForSecondsRealtime(Random.Range(3,5));
+        Destroy(gameObject);
     }
 }
