@@ -6,11 +6,12 @@ using UnityEngine;
 using System.Numerics;
 using System;
 using UnityEngine.UI;
+using UnityEditor.U2D;
 
 public class DataSave : MonoBehaviour
 {
     public BigInteger Money = 0;
-    public BigInteger MoneyEarning = 110;
+    public BigInteger MoneyEarning;
     public float ShowTime;
     [Range(0, 100)]
     public int HappinessRate;
@@ -23,6 +24,9 @@ public class DataSave : MonoBehaviour
         SaveAllData();
         LoadAllData();
         SetStageImage();
+
+
+        MoneyEarning = CurrentStage.StageEaringIncrease;
     }
 
     public void SetStageImage()
@@ -57,6 +61,7 @@ public class DataSave : MonoBehaviour
         PlayerPrefs.SetFloat(nameof(ShowTime), ShowTime);
         PlayerPrefs.SetInt(nameof(StageLevel), StageLevel);
         PlayerPrefs.SetInt(nameof(HappinessRate), HappinessRate);
+        
     }
     public void LoadAllData()
     {

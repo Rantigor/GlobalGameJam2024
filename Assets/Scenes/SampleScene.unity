@@ -3449,7 +3449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6563e98c538b53343963cb3b19bc40b4, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4355,7 +4355,7 @@ RectTransform:
   m_Father: {fileID: 1206762542}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.0625}
+  m_AnchorMin: {x: 0, y: 0.06249995}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -8737,6 +8737,7 @@ MonoBehaviour:
   HappinessRate: 0
   StageLevel: 0
   Stages:
+  - {fileID: 11400000, guid: 9f96a17ac3af07a43ba1b27a124c156d, type: 2}
   - {fileID: 11400000, guid: 0430cebecdb5066429d0f57c77c79598, type: 2}
   - {fileID: 11400000, guid: a1216091d3a751c4fa792367dbb79838, type: 2}
   CurrentStage: {fileID: 0}
@@ -11157,7 +11158,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 895986841}
   m_HandleRect: {fileID: 895986840}
   m_Direction: 2
-  m_Value: 1.0000007
+  m_Value: 0.9999992
   m_Size: 0.9375
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -12487,7 +12488,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e0f5b3e8a63be4186273758c10ec5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Product: {fileID: 11400000, guid: d284083c1b1bdf04abf5a60c118a8655, type: 2}
+  Products:
+  - {fileID: 11400000, guid: d284083c1b1bdf04abf5a60c118a8655, type: 2}
+  - {fileID: 11400000, guid: 3ee50f2c05e069241a34972dafb2631e, type: 2}
+  - {fileID: 11400000, guid: 29172d81b33de3f4485b8ab2fe1a9663, type: 2}
 --- !u!1 &2143311371
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 437412f3b48b04d4ea80fe33529da73e, type: 3}
+  m_Name: Stage0
+  m_EditorClassIdentifier: 
+  StageName: Stage0
+  StageLevel: 0
+  StageCapacity: 100
+  ShowTime: 1
+  StagePrice: 0
+  StageEaringIncrease: 500
+  IsStageBought: 1
+  StageImage: {fileID: 21300000, guid: 6563e98c538b53343963cb3b19bc40b4, type: 3}

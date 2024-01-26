@@ -8,7 +8,7 @@ public class ProductsSO : ScriptableObject
 {
     public string ProductName;
     public ulong ProductPrice;
-    public bool IsProductBought;
+    public int ProductLevel;
     [Range(0,100)]
     public int EvilnessEffectPoint;
     public Sprite ProductImage;

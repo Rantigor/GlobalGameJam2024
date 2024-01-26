@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03a06f11006d4454fa3d7f7af60b2c37, type: 3}
-  m_Name: "\xC7orap"
+  m_Name: "Ultra \xC7orap"
   m_EditorClassIdentifier: 
-  ProductName: "\xC7orap"
-  ProductPrice: 10
-  IsProductBought: 0
-  EvilnessEffectPoint: 24
-  ProductImage: {fileID: 21300000, guid: e1a6d6a9e0b9bd4468f7ecc8f1f5d20e, type: 3}
+  ProductName: "Ultra \xC7orap"
+  ProductPrice: 921
+  ProductLevel: 10
+  EvilnessEffectPoint: 29
+  ProductImage: {fileID: 21300000, guid: 8c8b62c6314c526479aa6f96b4af0c28, type: 3}
