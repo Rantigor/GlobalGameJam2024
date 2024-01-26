@@ -15,5 +15,5 @@ MonoBehaviour:
   ProductName: "\xC7orap"
   ProductPrice: 121
   ProductLevel: 12
-  EvilnessEffectPoint: 112
+  EvilnessEffectPoint: 100
   ProductImage: {fileID: 21300000, guid: e1a6d6a9e0b9bd4468f7ecc8f1f5d20e, type: 3}
