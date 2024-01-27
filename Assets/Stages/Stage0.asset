@@ -15,7 +15,7 @@ MonoBehaviour:
   StageName: Stage0
   StageLevel: 0
   StageCapacity: 100
-  ShowTime: 1
+  ShowTime: 10
   ShowTicketPrice: 10
   StagePrice: 0
   StageEaringIncrease: 500

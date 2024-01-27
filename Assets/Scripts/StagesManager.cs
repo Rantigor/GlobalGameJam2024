@@ -14,7 +14,7 @@ public class StagesManager : MonoBehaviour
     private void Start()
     {
         dataSave = FindObjectOfType<DataSave>();
-        if (PlayerPrefs.GetString(Stage.StageName) != null)
+        if (PlayerPrefs.GetString(Stage.StageName) != "")
         {
             if (PlayerPrefs.GetString(PlayerPrefs.GetString(Stage.StageName)) == "true")
             {

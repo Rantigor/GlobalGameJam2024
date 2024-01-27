@@ -16,7 +16,9 @@ public class ProductManager : MonoBehaviour
     private void Start()
     {
         dataSave = FindObjectOfType<DataSave>();
-        SaveProductData();
+
+        if(PlayerPrefs.GetString("ProductPrice") == "")
+            SaveProductData();
         LoadProductData();
 
         while(Products[_currentProduct].ProductLevel >= 10)

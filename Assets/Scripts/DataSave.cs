@@ -11,17 +11,22 @@ using UnityEditor.U2D;
 public class DataSave : MonoBehaviour
 {
     public BigInteger Money = 0;
-    public BigInteger MoneyEarning;
-    public float ShowTime;
+    public BigInteger MoneyEarning = 0;
+    public float ShowTime = 0;
     [Range(0, 100)]
-    public float HappinessRate;
+    public float HappinessRate = 0;
     public int StageLevel = 0;
     [SerializeField]List<StagesProductsSO> Stages;
     public StagesProductsSO CurrentStage;
     public Image StageImage;
+    public int DayNumber = 1;
+    public int ShowNumber = 1;
     private void Start()
     {
-        SaveAllData();
+        if (PlayerPrefs.GetString(nameof(Money)) == "")
+        {
+            SaveAllData();
+        }
         LoadAllData();
         SetStageImage();
 
@@ -61,6 +66,8 @@ public class DataSave : MonoBehaviour
         PlayerPrefs.SetFloat(nameof(ShowTime), ShowTime);
         PlayerPrefs.SetInt(nameof(StageLevel), StageLevel);
         PlayerPrefs.SetFloat(nameof(HappinessRate), HappinessRate);
+        PlayerPrefs.SetInt(nameof(DayNumber), DayNumber);
+        PlayerPrefs.SetInt(nameof(ShowNumber), ShowNumber);
 
         if(CurrentStage != null)
             PlayerPrefs.SetInt(CurrentStage.StageName, CurrentStage.ShowTicketPrice);
@@ -72,6 +79,8 @@ public class DataSave : MonoBehaviour
         ShowTime = PlayerPrefs.GetFloat(nameof(ShowTime));
         StageLevel = PlayerPrefs.GetInt(nameof(StageLevel));
         HappinessRate = PlayerPrefs.GetFloat(nameof(HappinessRate));
+        DayNumber = PlayerPrefs.GetInt(nameof(DayNumber));
+        ShowNumber = PlayerPrefs.GetInt(nameof(ShowNumber));
 
         if (CurrentStage != null)
             CurrentStage.ShowTicketPrice = PlayerPrefs.GetInt(CurrentStage.StageName);

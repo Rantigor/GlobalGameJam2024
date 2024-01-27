@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.PlayerLoop;
 
 public class AudienceEventClicker : MonoBehaviour, IPointerClickHandler
 {
@@ -16,7 +17,13 @@ public class AudienceEventClicker : MonoBehaviour, IPointerClickHandler
         audienceEvent.EventEnter();
         Destroy(gameObject);
     }
-
+    private void Update()
+    {
+        if(!audienceEvent.StandUpShow.isShowContinue)
+        {
+            Destroy(gameObject);
+        }
+    }
     IEnumerator DeleteEvent()
     {
         yield return new WaitForSecondsRealtime(Random.Range(3,5));

@@ -24,9 +24,9 @@ public class DataUIUpdater : MonoBehaviour
     }
     public void UpdateData()
     {
-        _moneyText.text = DisplayCurrency(dataSave.Money);
-        _moneyEarningText.text = DisplayEarningCurrency(dataSave.MoneyEarning);
-        _happinessRateText.text = dataSave.HappinessRate.ToString();
+        _moneyText.text = "Money: " + DisplayCurrency(dataSave.Money);
+        _moneyEarningText.text = "Money Earning: " + DisplayEarningCurrency(dataSave.MoneyEarning);
+        _happinessRateText.text = "Happiness Rate: " + "%" + dataSave.HappinessRate.ToString();
     }
     private void Update()
     {

@@ -15,9 +15,13 @@ public class AudienceEvent : MonoBehaviour
     public List<AudioClip> GeneralAudioClips = new List<AudioClip>();
     private List<AudioClip> _currentAudioClips;
 
+    private DataSave _dataSave;
+    public StanUpShow StandUpShow;
 
     private void Start()
     {
+        _dataSave = FindObjectOfType<DataSave>();
+        StandUpShow = FindObjectOfType<StanUpShow>();
         _currentAudioClips = GeneralAudioClips;
         _audioSource = GetComponent<AudioSource>();
     }
@@ -36,16 +40,24 @@ public class AudienceEvent : MonoBehaviour
             _currentAudioClips = GeneralAudioClips;
         }
 
+        StandUpShow.earnedMoney += (ulong)(_dataSave.CurrentStage.ShowTicketPrice + (int)(_dataSave.CurrentStage.StageEaringIncrease / 1000));
+
+
         int randomNum = Random.Range(0, _currentAudioClips.Count);
         _audioSource.clip = _currentAudioClips[randomNum];
         _currentAudioClips.Remove(_currentAudioClips[randomNum]);
         _audioSource.Play();
     }
-    private void Update()
+
+    public IEnumerator RandomTimeCreateEvent()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        float time;
+        while(StandUpShow.isShowContinue)
         {
-            EventCreate();
+            time = Random.Range(_dataSave.ShowTime / 4, _dataSave.ShowTime / 2);
+            yield return new WaitForSecondsRealtime(time);
+            if(StandUpShow._currentShowTime > time)
+                EventCreate();
         }
     }
 }
