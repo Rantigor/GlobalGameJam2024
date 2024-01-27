@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StageName: Stage0
   StageLevel: 0
-  StageCapacity: 100
-  ShowTime: 10
-  ShowTicketPrice: 10
+  StageCapacity: 1000
+  ShowTime: 2
+  ShowTicketPrice: 1000
   StagePrice: 0
   StageEaringIncrease: 500
   IsStageBought: 1

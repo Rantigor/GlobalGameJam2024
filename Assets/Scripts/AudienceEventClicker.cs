@@ -26,7 +26,7 @@ public class AudienceEventClicker : MonoBehaviour, IPointerClickHandler
     }
     IEnumerator DeleteEvent()
     {
-        yield return new WaitForSecondsRealtime(Random.Range(3,5));
+        yield return new WaitForSecondsRealtime(audienceEvent.EventTime);
         Destroy(gameObject);
     }
 }

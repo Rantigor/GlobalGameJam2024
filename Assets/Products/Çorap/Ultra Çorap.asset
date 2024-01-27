@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "Ultra \xC7orap"
   m_EditorClassIdentifier: 
   ProductName: "Ultra \xC7orap"
-  ProductPrice: 921
-  ProductLevel: 10
-  EvilnessEffectPoint: 29
+  ProductPrice: 10
+  ProductLevel: 0
+  EvilnessEffectPoint: 59
   ProductImage: {fileID: 21300000, guid: 8c8b62c6314c526479aa6f96b4af0c28, type: 3}

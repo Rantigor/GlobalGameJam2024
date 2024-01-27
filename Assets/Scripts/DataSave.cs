@@ -21,13 +21,16 @@ public class DataSave : MonoBehaviour
     public Image StageImage;
     public int DayNumber = 1;
     public int ShowNumber = 1;
+    AudienceEvent audienceEvent;
     private void Start()
     {
+        audienceEvent = FindObjectOfType<AudienceEvent>();
         if (PlayerPrefs.GetString(nameof(Money)) == "")
         {
             SaveAllData();
         }
         LoadAllData();
+        audienceEvent.LoadEventData();
         SetStageImage();
 
 
@@ -88,5 +91,6 @@ public class DataSave : MonoBehaviour
     private void OnApplicationQuit()
     {
         //SaveAllData();
+        //audienceEvent.SaveEventData();
     }
 }

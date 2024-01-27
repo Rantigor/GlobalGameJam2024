@@ -51,6 +51,8 @@ public class ProductManager : MonoBehaviour
         {
             print("Para yetersiz");
         }
+        if (Products[_currentProduct].ProductLevel >= 10)
+            _currentProduct++;
         transform.GetComponent<Image>().sprite = Products[_currentProduct].ProductImage;
         transform.GetComponentInChildren<TextMeshProUGUI>().text = Products[_currentProduct].ProductName + "\n" + Products[_currentProduct].ProductPrice;
     }

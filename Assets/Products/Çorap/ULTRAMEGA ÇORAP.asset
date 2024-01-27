@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "ULTRAMEGA \xC7ORAP"
   m_EditorClassIdentifier: 
   ProductName: "ULTRAMEGA \xC7ORAP"
-  ProductPrice: 468
-  ProductLevel: 5
-  EvilnessEffectPoint: 8
+  ProductPrice: 10
+  ProductLevel: 0
+  EvilnessEffectPoint: 35
   ProductImage: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}

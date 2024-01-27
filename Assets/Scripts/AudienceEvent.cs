@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,7 +8,13 @@ using UnityEngine.UIElements;
 
 public class AudienceEvent : MonoBehaviour
 {
-    public int EventRatio;
+    public int EventRatio = 10;//Deneme sýklýðý
+    public int EventTime;//event süresi
+    public int EventEarn;//event kazancý
+    public int EventChance;//çýkma þansý
+    public int EventNumber = 1;//ayný anda kaç tane çýkabilir
+    private int _entyrNumber = 0;
+
     public GameObject[] AudienceEventAreaCorner = new GameObject[4];
     public GameObject EventEffectUI;
 
@@ -15,15 +22,21 @@ public class AudienceEvent : MonoBehaviour
     public List<AudioClip> GeneralAudioClips = new List<AudioClip>();
     private List<AudioClip> _currentAudioClips;
 
-    private DataSave _dataSave;
     public StanUpShow StandUpShow;
 
     private void Start()
     {
-        _dataSave = FindObjectOfType<DataSave>();
         StandUpShow = FindObjectOfType<StanUpShow>();
-        _currentAudioClips = GeneralAudioClips;
         _audioSource = GetComponent<AudioSource>();
+        _currentAudioClips = new List<AudioClip>(GeneralAudioClips);
+        _entyrNumber = PlayerPrefs.GetInt(nameof(_entyrNumber));
+
+        if(_entyrNumber == 0)
+        {
+            SaveEventData();
+            _entyrNumber++;
+            PlayerPrefs.SetInt(nameof(_entyrNumber), _entyrNumber);
+        }
     }
 
     public void EventCreate()
@@ -31,33 +44,49 @@ public class AudienceEvent : MonoBehaviour
         Vector3 eventPos = new Vector3(Random.Range(AudienceEventAreaCorner[0].transform.position.x, AudienceEventAreaCorner[2].transform.position.x)
             ,Random.Range(AudienceEventAreaCorner[1].transform.position.y, AudienceEventAreaCorner[0].transform.position.y),0);
 
-        Instantiate(EventEffectUI, eventPos,Quaternion.identity,FindObjectOfType<Canvas>().gameObject.transform);
+        Instantiate(EventEffectUI, eventPos, Quaternion.identity, FindObjectOfType<Canvas>().gameObject.transform).GetComponent<Transform>().SetSiblingIndex(5);
     }
     public void EventEnter()
     {
-        if(_currentAudioClips.Count <= 0)
-        {
-            _currentAudioClips = GeneralAudioClips;
-        }
-
-        StandUpShow.earnedMoney += (ulong)(_dataSave.CurrentStage.ShowTicketPrice + (int)(_dataSave.CurrentStage.StageEaringIncrease / 1000));
-
+        StandUpShow.earnedMoney += (ulong)EventEarn;
 
         int randomNum = Random.Range(0, _currentAudioClips.Count);
-        _audioSource.clip = _currentAudioClips[randomNum];
+        _audioSource.PlayOneShot(_currentAudioClips[randomNum]);
         _currentAudioClips.Remove(_currentAudioClips[randomNum]);
-        _audioSource.Play();
+
+        if(_currentAudioClips.Count <= 0)
+        {
+            _currentAudioClips = new List<AudioClip>(GeneralAudioClips);
+        }
     }
 
     public IEnumerator RandomTimeCreateEvent()
     {
-        float time;
         while(StandUpShow.isShowContinue)
         {
-            time = Random.Range(_dataSave.ShowTime / 4, _dataSave.ShowTime / 2);
-            yield return new WaitForSecondsRealtime(time);
-            if(StandUpShow._currentShowTime > time)
+            yield return new WaitForSecondsRealtime(1);
+            int randomNum = Random.Range(0, 100);
+            //EventChance arttýkça event çýkma olasýlýðý artar
+            if(StandUpShow._currentShowTime > 0.5f && FindObjectsOfType<AudienceEventClicker>().Length <= EventNumber && randomNum <= EventChance)
                 EventCreate();
+            yield return new WaitForSecondsRealtime(EventRatio - 1);
         }
+    }
+
+    public void SaveEventData()
+    {
+        PlayerPrefs.SetInt(nameof(EventRatio), EventRatio);
+        PlayerPrefs.SetInt(nameof(EventChance), EventChance);
+        PlayerPrefs.SetInt(nameof(EventEarn), EventEarn);
+        PlayerPrefs.SetInt(nameof(EventTime), EventTime);
+        PlayerPrefs.SetInt(nameof(EventNumber), EventNumber);
+    }
+    public void LoadEventData()
+    {
+        EventRatio = PlayerPrefs.GetInt(nameof(EventRatio));
+        EventChance = PlayerPrefs.GetInt(nameof(EventChance));
+        EventEarn = PlayerPrefs.GetInt(nameof(EventEarn));
+        EventTime = PlayerPrefs.GetInt(nameof(EventTime));
+        EventNumber = PlayerPrefs.GetInt(nameof(EventNumber));
     }
 }
