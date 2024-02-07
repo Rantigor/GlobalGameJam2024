@@ -6,7 +6,6 @@ using UnityEngine;
 using System.Numerics;
 using System;
 using UnityEngine.UI;
-using UnityEditor.U2D;
 
 public class DataSave : MonoBehaviour
 {
